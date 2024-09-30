@@ -16,6 +16,10 @@ p {
     font-size: 28px;
 }
 
+h2 {
+    font-size: 28px;
+}
+
 img {
     max-width: 100%;
 }
@@ -25,6 +29,7 @@ img {
     top: 0;
     overflow: hidden;
     background-color: #ffffff;
+    width: 100;
 }
 
 #NAV img {
@@ -59,27 +64,54 @@ img {
 #S1 {
     background-color: rgb(245, 240, 230);
     scroll-margin-top: 151px;
-    padding: 1%;
+}
+
+#S1 h2 {
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+#S1 img {
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+#S1 p {
+    margin-left: 1%;
+    margin-right: 1%;
 }
 
 #S2 {
     background-image: url("https://www.ucsd.edu/_resources/img/bg-orbs-1.jpg");
     scroll-margin-top: 151px;
-    padding: 1%;
+}
+
+#S2 img {
+    margin-left: 1%;
+    margin-right: 1%;
 }
 
 #S2 h2 {
     color: #ffffff;
+    margin-left: 1%;
+    margin-right: 1%;
 }
 
 #S2 p {
     color: #ffffff;
+    margin-left: 1%;
+    margin-right: 1%;
 }
 
 #S3 {
     background-color: rgb(245, 240, 230);
     scroll-margin-top: 151px;
-    padding: 1%;
+    padding-bottom: 1%;
+}
+
+#S3 h2 {
+    margin-left: 1%;
+    margin-right: 1%;
 }
 
 .wrapper {
@@ -94,7 +126,6 @@ img {
     background-color: #182b49;
     max-height: 500px;
     overflow: scroll;
-    padding: 1%;
 }
 
 .b {
@@ -102,7 +133,6 @@ img {
     background-color: #182b49;
     max-height: 500px;
     overflow: scroll;
-    padding: 1%;
 }
 
 .c {
@@ -110,7 +140,6 @@ img {
     background-color: #182b49;
     max-height: 500px;
     overflow: scroll;
-    padding: 1%;
 }
 
 .d {
@@ -118,7 +147,24 @@ img {
     background-color: #182b49;
     max-height: 500px;
     overflow: scroll;
-    padding: 1%;
+}
+
+#S4 {
+    background-image: url("https://www.ucsd.edu/_resources/img/bg-orbs-1.jpg");
+    scroll-margin-top: 151px;
+}
+
+#S4 h2 {
+    color: #ffffff;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+#S4 p {
+    color: #ffffff;
+    font-size: 20px;
+    margin-left: 1%;
+    margin-right: 1%;
 }
 
 @media screen and (max-width: 800px) {
