@@ -16,6 +16,10 @@ p {
     font-size: 28px;
 }
 
+img {
+    max-width: 100%;
+}
+
 #NAV {
     position: sticky;
     top: 0;
@@ -55,11 +59,13 @@ p {
 #S1 {
     background-color: rgb(245, 240, 230);
     scroll-margin-top: 151px;
+    padding: 1%;
 }
 
 #S2 {
     background-image: url("https://www.ucsd.edu/_resources/img/bg-orbs-1.jpg");
     scroll-margin-top: 151px;
+    padding: 1%;
 }
 
 #S2 h2 {
@@ -73,6 +79,7 @@ p {
 #S3 {
     background-color: rgb(245, 240, 230);
     scroll-margin-top: 151px;
+    padding: 1%;
 }
 
 .wrapper {
@@ -87,6 +94,7 @@ p {
     background-color: #182b49;
     max-height: 500px;
     overflow: scroll;
+    padding: 1%;
 }
 
 .b {
@@ -94,6 +102,7 @@ p {
     background-color: #182b49;
     max-height: 500px;
     overflow: scroll;
+    padding: 1%;
 }
 
 .c {
@@ -101,6 +110,7 @@ p {
     background-color: #182b49;
     max-height: 500px;
     overflow: scroll;
+    padding: 1%;
 }
 
 .d {
@@ -108,5 +118,27 @@ p {
     background-color: #182b49;
     max-height: 500px;
     overflow: scroll;
+    padding: 1%;
 }
 
+@media screen and (max-width: 800px) {
+    #NAV ul {
+        display: none;
+    }
+
+    #NAV img {
+        max-width: 75%;
+    }
+
+    li a {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    .wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
