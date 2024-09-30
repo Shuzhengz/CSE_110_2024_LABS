@@ -1,2 +1,3 @@
-# CSE_110_2024_LABS
+# CSE 110 2024 LABS
+
 Labs for CSE 110, Fall 2024
