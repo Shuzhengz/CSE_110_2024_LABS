@@ -1,3 +1,3 @@
 # CSE 110 2024 LABS
 
-Labs for CSE 110, Fall 2024
+Lab assignments for UCSD CSE 110, Fall 2024
