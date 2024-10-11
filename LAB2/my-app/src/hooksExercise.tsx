@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export function ClickCounter() {
     const [count, setCount] = useState(0);
@@ -6,6 +6,10 @@ export function ClickCounter() {
     const handleClick = () => {
         setCount(count + 1);
     };
+
+    useEffect(() => {
+        document.title = `You clicked ${count} times`;
+    }, [count]);
 
     return (
         <div>
