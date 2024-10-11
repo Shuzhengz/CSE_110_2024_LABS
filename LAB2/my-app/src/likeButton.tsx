@@ -17,7 +17,7 @@ export function LikeButton() {
             onClick={() => setLike(!like)}
             style={{background: theme.background, color: theme.foreground}}
         >
-            {like ? "❤️": "🤍"}
+            {like ? "❤️" : "🤍"}
         </button>
     );
 }
