@@ -4,21 +4,18 @@ import {ThemeContext, themes} from "./themeContext";
 export function LikeButton() {
     const [like, setLike] = useState(false);
 
-    useEffect(() => {
-
+    useEffect(() => {;
     }, [like]);
 
     const theme = useContext(ThemeContext);
 
     return (
-
         <button
             onClick={() => setLike(!like)}
             style={{background: theme.background, color: theme.foreground}}
         >
             {like ? "❤️": "♡"}
         </button>
-
     );
 }
 
