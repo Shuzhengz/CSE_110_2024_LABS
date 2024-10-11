@@ -3,11 +3,12 @@ import './App.css';
 import { Label, Note } from "./types"; // Import the Label type from the appropriate module
 import { dummyNotesList } from "./constants"; // Import the dummyNotesList from the appropriate module
 import { LikeButton } from "./likeButton";
-import {useState} from "react";
+import {JSXElementConstructor, ReactElement, ReactNode, ReactPortal, useState} from "react";
 
-const fav = [{}]
+const fav: string[] = [];
 
 function App() {
+
     const [notes, setNotes] = useState(dummyNotesList);
     const initialNote = {
         id: -1,
@@ -26,6 +27,8 @@ function App() {
         setCreateNote(initialNote);
     };
 
+    const [selectedNote, setSelectedNote] = useState<Note>(initialNote);
+
     return (
         <div className='app-container'>
             <form className="note-form" onSubmit={createNoteHandler}>
@@ -33,7 +36,7 @@ function App() {
                     <input
                         placeholder="Note Title"
                         onChange={(event) =>
-                            setCreateNote({ ...createNote, title: event.target.value })}
+                            setCreateNote({...createNote, title: event.target.value})}
                         required>
                     </input>
                 </div>
@@ -41,7 +44,7 @@ function App() {
                 <div>
       	<textarea
             onChange={(event) =>
-                setCreateNote({ ...createNote, content: event.target.value })}
+                setCreateNote({...createNote, content: event.target.value})}
             required>
       	</textarea>
                 </div>
@@ -49,7 +52,7 @@ function App() {
                 <div>
                     <select
                         onChange={(event) =>
-                            setCreateNote({ ...createNote, label: event.target.value as Label})}
+                            setCreateNote({...createNote, label: event.target.value as Label})}
                         required>
                         <option value={Label.personal}>Personal</option>
                         <option value={Label.study}>Study</option>
@@ -58,7 +61,9 @@ function App() {
                     </select>
                 </div>
 
-                <div><button type="submit">Create Note</button></div>
+                <div>
+                    <button type="submit">Create Note</button>
+                </div>
             </form>
 
             <div className="notes-grid">
@@ -71,13 +76,18 @@ function App() {
                             <LikeButton/>
                             <button>x</button>
                         </div>
-                        <h2> {note.title} </h2>
-                        <p> {note.content} </p>
-                        <p> {note.label} </p>
+                        <h2 contentEditable="true"> {note.title} </h2>
+                        <p contentEditable="true"> {note.content} </p>
+                        <p contentEditable="true"> {note.label} </p>
                     </div>
                 ))}
             </div>
-        </div>  );
+
+            <div>
+                <p>List of Favorites</p>
+
+            </div>
+        </div>);
 }
 
 export default App;

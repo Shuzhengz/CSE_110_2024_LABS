@@ -4,7 +4,8 @@ import {ThemeContext, themes} from "./themeContext";
 export function LikeButton() {
     const [like, setLike] = useState(false);
 
-    useEffect(() => {;
+    useEffect(() => {
+        console.log("Liked")
     }, [like]);
 
     const theme = useContext(ThemeContext);
