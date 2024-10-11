@@ -2,7 +2,7 @@ import './App.css';
 
 import { Label, Note } from "./types"; // Import the Label type from the appropriate module
 import { dummyNotesList } from "./constants"; // Import the dummyNotesList from the appropriate module
-import { ClickCounter } from "./hooksExercise";
+import { LikeButton } from "./likeButton";
 
 function App() {
     return (
@@ -24,6 +24,7 @@ function App() {
                         key={note.id}
                         className="note-item">
                         <div className="notes-header">
+                            <LikeButton/>
                             <button>x</button>
                         </div>
                         <h2> {note.title} </h2>
@@ -33,7 +34,13 @@ function App() {
                 ))}
             </div>
 
-            <ClickCounter/>
+            <div>
+                <p>List of favorites</p>
+            </div>
+
+            <div>
+                <LikeButton/>
+            </div>
         </div>
 
     );
