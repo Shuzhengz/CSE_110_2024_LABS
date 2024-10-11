@@ -2,11 +2,12 @@ import './App.css';
 
 import { Label, Note } from "./types"; // Import the Label type from the appropriate module
 import { dummyNotesList } from "./constants"; // Import the dummyNotesList from the appropriate module
+import { ClickCounter } from "./hooksExercise";
 
 function App() {
     return (
         <div className='app-container'>
-            
+
             <form className="note-form">
                 <div><input placeholder="Note Title"></input></div>
 
@@ -31,6 +32,8 @@ function App() {
                     </div>
                 ))}
             </div>
+
+            <ClickCounter/>
         </div>
 
     );
