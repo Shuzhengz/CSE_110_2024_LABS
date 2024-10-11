@@ -16,6 +16,7 @@ function App() {
         content: "",
         label: Label.other,
     };
+
     const [createNote, setCreateNote] = useState(initialNote);
 
     const createNoteHandler = (event: React.FormEvent) => {
@@ -28,6 +29,10 @@ function App() {
     };
 
     const [selectedNote, setSelectedNote] = useState<Note>(initialNote);
+
+    function removeNote() {
+        alert('remove');
+    }
 
     return (
         <div className='app-container'>
@@ -73,8 +78,8 @@ function App() {
                         className="note-item"
                     >
                         <div className="notes-header">
-                            <LikeButton/>
-                            <button>x</button>
+                            <LikeButton></LikeButton>
+                            <button onClick={removeNote}>x</button>
                         </div>
                         <h2 contentEditable="true"> {note.title} </h2>
                         <p contentEditable="true"> {note.content} </p>
