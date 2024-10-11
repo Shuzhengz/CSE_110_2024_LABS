@@ -1,3 +1,5 @@
+// Not used anymore, cannot find a way to update the list with this
+
 import React, {useState, useEffect, useContext} from 'react';
 import {ThemeContext, themes} from "./themeContext";
 
@@ -15,7 +17,7 @@ export function LikeButton() {
             onClick={() => setLike(!like)}
             style={{background: theme.background, color: theme.foreground}}
         >
-            {like ? "❤️": "♡"}
+            {like ? "❤️": "🤍"}
         </button>
     );
 }

@@ -3,11 +3,10 @@ import './App.css';
 import { Label, Note } from "./types"; // Import the Label type from the appropriate module
 import { dummyNotesList } from "./constants"; // Import the dummyNotesList from the appropriate module
 import { LikeButton } from "./likeButton";
-import {JSXElementConstructor, ReactElement, ReactNode, ReactPortal, useState} from "react";
+import React, {JSXElementConstructor, ReactElement, ReactNode, ReactPortal, useContext, useState} from "react";
+import {ThemeContext, themes} from "./themeContext";
 
-const fav: string[] = [];
-
-function App() {
+function App(){
 
     const [notes, setNotes] = useState(dummyNotesList);
     const initialNote = {
@@ -18,6 +17,9 @@ function App() {
     };
 
     const [createNote, setCreateNote] = useState(initialNote);
+    const [selectedNote, setSelectedNote] = useState<Note>(initialNote);
+    const [favMap, setFavMap] = useState<any>({});
+    const [currentTheme, setCurrentTheme] = useState(themes.light);
 
     const createNoteHandler = (event: React.FormEvent) => {
         event.preventDefault();
@@ -28,14 +30,32 @@ function App() {
         setCreateNote(initialNote);
     };
 
-    const [selectedNote, setSelectedNote] = useState<Note>(initialNote);
-
     const removeNote = (deleteNote: Note) => {
-        const filteredNotes = notes.filter(note => note !== deleteNote);
-        setNotes(filteredNotes);
+        setNotes(notes.filter(note => note !== deleteNote));
+    }
+
+    const updateFav = (title: string) => {
+        let tempMap = Object.assign({}, favMap);
+        tempMap[title] = !favMap[title];
+        setFavMap(tempMap);
+    }
+
+    function ToggleTheme({ setCurrentTheme } : { setCurrentTheme: any }) {
+        const currentTheme = useContext(ThemeContext);
+
+        const toggleTheme = () => {
+            setCurrentTheme(currentTheme === themes.light ? themes.dark : themes.light);
+        };
+
+        return (
+            <ThemeContext.Provider value={currentTheme}>
+                <button onClick={toggleTheme}> Toggle Theme </button>
+            </ThemeContext.Provider>
+        );
     }
 
     return (
+        <ThemeContext.Provider value={currentTheme}>
         <div className='app-container'>
             <form className="note-form" onSubmit={createNoteHandler}>
                 <div>
@@ -70,16 +90,16 @@ function App() {
                 <div>
                     <button type="submit">Create Note</button>
                 </div>
+
+                <ToggleTheme setCurrentTheme={setCurrentTheme}></ToggleTheme>
             </form>
 
             <div className="notes-grid">
                 {notes.map((note) => (
-                    <div
-                        key={note.id}
-                        className="note-item"
-                    >
+                    <div key={note.id} className="note-item"
+                         style={{ background: currentTheme.background, color: currentTheme.foreground }}>
                         <div className="notes-header">
-                            <LikeButton></LikeButton>
+                            <button onClick={() => updateFav(note.title)}>{favMap[note.title] ? "❤️" : "🤍"}</button>
                             <button onClick={() => removeNote(note)}>x</button>
                         </div>
                         <h2 contentEditable="true"> {note.title} </h2>
@@ -91,9 +111,18 @@ function App() {
 
             <div>
                 <p>List of Favorites</p>
-
+                <div>
+                    {Object.keys(favMap).map((title: string) => {
+                        if (favMap[title]) {
+                            return <p>{title}</p>;
+                        }
+                        return <></>;
+                    })}
+                </div>
             </div>
-        </div>);
+        </div>
+        </ThemeContext.Provider>
+    );
 }
 
 export default App;
