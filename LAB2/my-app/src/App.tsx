@@ -30,8 +30,9 @@ function App() {
 
     const [selectedNote, setSelectedNote] = useState<Note>(initialNote);
 
-    function removeNote() {
-        alert('remove');
+    const removeNote = (deleteNote: Note) => {
+        const filteredNotes = notes.filter(note => note !== deleteNote);
+        setNotes(filteredNotes);
     }
 
     return (
@@ -79,7 +80,7 @@ function App() {
                     >
                         <div className="notes-header">
                             <LikeButton></LikeButton>
-                            <button onClick={removeNote}>x</button>
+                            <button onClick={() => removeNote(note)}>x</button>
                         </div>
                         <h2 contentEditable="true"> {note.title} </h2>
                         <p contentEditable="true"> {note.content} </p>
