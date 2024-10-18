@@ -99,10 +99,11 @@ export const StickyNotes = () => {
                 <div className="notes-grid">
                     {notes.map((note) => (
                         <div key={note.id} className="note-item" onClick={() => selectsNote(note)}
-                             style={{background: currentTheme.background, color: currentTheme.foreground}}>
+                             style={{background: currentTheme.background, color: currentTheme.foreground}}
+                             data-testid={note.id}>
                             <div className="notes-header">
                                 <button onClick={() => updateFav(note.title)}>{favMap[note.title] ? "❤️" : "🤍"}</button>
-                                <button onClick={() => removeNote(note)}>x</button>
+                                <button onClick={() => removeNote(note)} data-testid={"x" + note.id}>x</button>
                             </div>
                             <h2 contentEditable="true"> {note.title} </h2>
                             <p contentEditable="true"> {note.content} </p>
