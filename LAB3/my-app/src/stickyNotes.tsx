@@ -30,6 +30,11 @@ export const StickyNotes = () => {
         setNotes(notes.filter(note => note !== deleteNote));
     }
 
+    const selectsNote = (note: Note) => {
+        setSelectedNote(note);
+        console.log(selectedNote);
+    }
+
     const updateFav = (title: string) => {
         let tempMap = Object.assign({}, favMap);
         tempMap[title] = !favMap[title];
@@ -65,6 +70,7 @@ export const StickyNotes = () => {
 
                     <div>
       	<textarea
+            placeholder="Note Content"
             onChange={(event) =>
                 setCreateNote({...createNote, content: event.target.value})}
             required>
@@ -92,7 +98,7 @@ export const StickyNotes = () => {
 
                 <div className="notes-grid">
                     {notes.map((note) => (
-                        <div key={note.id} className="note-item"
+                        <div key={note.id} className="note-item" onClick={() => selectsNote(note)}
                              style={{background: currentTheme.background, color: currentTheme.foreground}}>
                             <div className="notes-header">
                                 <button onClick={() => updateFav(note.title)}>{favMap[note.title] ? "❤️" : "🤍"}</button>
@@ -108,7 +114,7 @@ export const StickyNotes = () => {
                 <div>
                     <p>List of Favorites</p>
                     <div>
-                        {Object.keys(favMap).map((title: string) => {
+                    {Object.keys(favMap).map((title: string) => {
                             if (favMap[title]) {
                                 return <p>{title}</p>;
                             }
