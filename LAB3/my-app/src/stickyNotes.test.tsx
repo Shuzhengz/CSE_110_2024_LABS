@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { StickyNotes } from "./stickyNotes";
+import {ToDoList} from "./toDoList";
 
 describe("Create StickyNote", () => {
     test("renders create note form", () => {
@@ -117,5 +118,36 @@ describe("remove StickyNote", () => {
 
         expect(testNoteTitle2).toBeNull();
         expect(testNoteContent2).toBeNull();
+    });
+});
+
+describe("list items displayed", () => {
+    test("displays items", () => {
+        render(<ToDoList />);
+
+        const item1 = screen.getByText("Apples");
+        const item2 = screen.getByText("Bananas");
+
+        expect(item1).toBeInTheDocument();
+        expect(item2).toBeInTheDocument();
+    });
+});
+
+describe("checks todolist display", () => {
+    test("displays and checks items", () => {
+        render(<ToDoList />);
+
+        const item1 = screen.getByTestId("Apples");
+        const item2 = screen.getByTestId("Bananas");
+        const title0 = screen.getByText("Items bought: 0");
+
+        expect(item1).toBeInTheDocument();
+        expect(item2).toBeInTheDocument();
+        expect(title0).toBeInTheDocument();
+
+        fireEvent.click(item1);
+
+        const title1 = screen.getByText("Items bought: 1");
+        expect(title1).toBeInTheDocument();
     });
 });
