@@ -1,6 +1,6 @@
+import { Request, Response } from 'express';
 import { Database } from "sqlite";
 import { createExpenseServer, deleteExpense, getExpenses } from "./expense-utils";
-import { Request, Response } from 'express';
 
 export function createExpenseEndpoints(app: any, db: Database) {
    // Create a new expense
